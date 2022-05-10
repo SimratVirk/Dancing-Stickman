@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="puppet_control.js"></script>
+   <title>Puppet animations</title>
+</head>
+
+<body>
+   <h1>Puppet animations</h1>
+   <svg width="200px" height="200px">
+      <defs>
+         <line id="limb" x1="0" y1="0" x2="0" y2="50" />
+      </defs>
+      <g id="figure" transform="translate(100 0)">
+         <g transform="translate(0 50)">
+            <!--head and body-->
+            <circle cx="0" cy="-10" r="10" fill="black" />
+            <line x1="0" y1="0" x2="0" y2="60" stroke="black" />
+
+            <!-- limbs -->
+            <g transform="translate(0 10)">
+               <g id="redArm" stroke="red">
+                  <use href="#limb">
+               </g>
+            </g>
+            <g transform="translate(0 10)">
+               <g id="blueArm" stroke="blue">
+                  <use href="#limb">
+               </g>
+            </g>
+
+            <g transform="translate(0 60)">
+               <g id="redLeg" stroke="red">
+                  <use href="#limb">
+               </g>
+            </g>
+            <g transform="translate(0 60)">
+               <g id="blueLeg" stroke="blue">
+                  <use href="#limb">
+               </g>
+            </g>
+         </g>
+      </g>
+
+   </svg><br>
+   <label>Red Arm</label><input id="rArmInput" target="redArm" type="range" min="0" max="720" step="0.1" value="360"
+      oninput="respondToInput()"><br>
+   <label>Blue Arm</label><input id="bArmInput" target="blueArm" type="range" min="0" max="720" step="0.1" value="360"
+      oninput="respondToInput()"><br>
+   <label>Red Leg</label><input id="rLegInput" target="redLeg" type="range" min="0" max="720" step="0.1" value="360"
+      oninput="respondToInput()"><br>
+   <label>Blue Leg</label><input id="bLegInput" target="blueLeg" type="range" min="0" max="720" step="0.1" value="360"
+      oninput="respondToInput()"><br>
+   <label>x-position</label><input id="figureInput" type="range" min="0" max="200" step="1" value="100"
+      oninput="respondToInput()"><br>
+
+   <input type="button" value="reset" onclick="reset()">
+   <input type="button" value="save" onclick="savePosition()">
+   <input type="button" value="start" onclick="startPlayBack()">
+   <input type="button" value="stop" onclick="stopPlayBack()"><br>
+   <label>Frames saved: </label><label id="message">0</label>
+
+   <h3>References</h3>
+   Rotating in SVG :<a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/transform#Rotate">SVG Rotate</a><br>
+   SetInterval:<a href="https://www.w3schools.com/jsref/met_win_setinterval.asp">SVG Rotate</a>
+</body>
+
+</html>
